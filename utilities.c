@@ -92,13 +92,13 @@ int rand_range (int min, int max) // inclusive
 	return min + rand() / (RAND_MAX / (max - min + 1) + 1);
 }
 
-static double float_rand (double min, double max)
+double float_rand (double min, double max)
 {
 	double scale = rand() / (double)RAND_MAX;
 	return min + scale * (max - min);
 }
 
-static unsigned rand_unsigned (void)
+unsigned rand_unsigned (void)
 {
 	unsigned n = 0;
 	int nb_bytes = 1 + (rand() % (sizeof n));
@@ -110,7 +110,7 @@ static unsigned rand_unsigned (void)
 	return n;
 }
 
-static void print_array (size_t length, const int array[length])
+void print_array (size_t length, const int array[length])
 {
 	if (length == 0) {
 		printf("{}\n");
@@ -122,7 +122,7 @@ static void print_array (size_t length, const int array[length])
 	printf("%d}\n", array[length - 1]);
 }
 
-static void print_matrix (size_t rows, size_t cols, const int matrix[rows][cols])
+void print_matrix (size_t rows, size_t cols, const int matrix[rows][cols])
 {
 	printf("{\n");
 	for (size_t row = 0; row < rows; row++) {
@@ -139,7 +139,7 @@ static void print_matrix (size_t rows, size_t cols, const int matrix[rows][cols]
 	printf("}\n");
 }
 
-static void print_words (const char *const words[])
+void print_words (const char *const words[])
 {
 	if (words[0] == NULL) {
 		printf("{}\n");
