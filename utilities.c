@@ -92,6 +92,12 @@ int rand_range (int min, int max) // inclusive
 	return min + rand() / (RAND_MAX / (max - min + 1) + 1);
 }
 
+static double float_rand (double min, double max)
+{
+	double scale = rand() / (double)RAND_MAX;
+	return min + scale * (max - min);
+}
+
 static unsigned rand_unsigned (void)
 {
 	unsigned n = 0;
