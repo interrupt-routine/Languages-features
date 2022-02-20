@@ -35,15 +35,18 @@ In particular, `GCC` and `clang` support them, but `MSVC` does not.
 VLAs are not int C++, but some compilers support them as an extension.
 
 ```c
-  const int SIZE_1 = 64;
+const int SIZE_1 = 64;
 
-  int array[SIZE_1]; // OK in C++, error in C : VLA at file scope
+int array[SIZE_1]; // OK in C++, error in C : VLA at file scope
 
-  void function (int size_2)
-  {
-    int array[SIZE_1]; // normal array in C++, VLA in C
-    int array[size_2]; // invalid in C++, VLA in C
-  }
+void function (int SIZE_2)
+{
+  const int SIZE_3 = 64;
+
+  int array[SIZE_1]; // normal array in C++, VLA in C
+  int array[SIZE_2]; // invalid in C++,      VLA in C
+  int array[SIZE_3]; // normal array in C++, VLA in C
+}
 ```
 
 If the length initializer of a VLA is <= `0`, the behavior is undefined.
