@@ -7,7 +7,7 @@
   ```
   How it works :
 
-  If a JavaScript function is called without `new`, `this` points to the global object (or `undefined` in strict mode).
+  If a JavaScript function is not called from an object context, `this` points to the global object (or `undefined` in strict mode).
   A constructor can thus check how it was called:
   ```javascript
   function Array (...args) {
@@ -18,4 +18,18 @@
   }
   ```
 
-
+* returning `this` in methods allow method chaining (fluent interface):
+```javascript
+    function Foo() {
+      ...
+    }
+    Foo.prototype.bar = function () {
+      ...
+    return this;
+    }
+    Foo.prototype.baz = function () {
+      ...
+    return this;
+    }
+    new Foo().bar().baz(). ...
+```
