@@ -2,7 +2,7 @@
 C and C++ do not have the same definition of a compile time constant.
 In particular, this is important to specify the length of an array.
 
-In standard C only `#define`d values, integer literals, and `enum` members, can be used;
+In standard C only `#define`d values, integer literals, `sizeof` expression, and `enum` members can be used;
 in C++ something like `const int size = 64;` is also considered a compile time constant
 
 ```c
@@ -15,7 +15,9 @@ const int SIZE_3 = 64;
 int array0[64];     // valid for both C and C++
 int array1[SIZE_1]; // valid for both C and C++
 int array2[SIZE_2]; // valid for both C and C++
-int array3[SIZE_3]; // valid for C++, error in C : SIZE_3 is not a compile time constant
+int array3[SIZE_2]; // valid for both C and C++
+int array4[SIZE_3]; // valid for C++, error in C : SIZE_3 is not a compile time constant
+int array5[sizeof(int)]; // valid for both C and C++
 
 int main (void)
 {
@@ -26,7 +28,7 @@ int main (void)
 However, `C99` onwards also optionally supports `VLA`s (Variable Length Arrays)
 (a bit of a misnomer, their length is fixed once set).
 Their length is initialized by a variable and is therefore decided at runtime, rather than compile time
-(this includes `sizeof` expressions).
+(this means `sizeof(VLA)` is only resolved at runtime).
 
 VLAs are allocated on the stack (and therefore there can be no VLAs at file-scope / global scope, because
 global variables are stored in the `.data` or `.rodata` segment rather than on the stack).
