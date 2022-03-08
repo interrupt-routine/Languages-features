@@ -19,17 +19,17 @@
   ```
 
 * returning `this` in methods allow method chaining (fluent interface):
-```javascript
-    function Foo() {
-      ...
-    }
-    Foo.prototype.bar = function () {
-      ...
-    return this;
-    }
-    Foo.prototype.baz = function () {
-      ...
-    return this;
-    }
-    new Foo().bar().baz(). ...
-```
+  ```javascript
+      function Foo() {
+        ...
+      }
+      Foo.prototype.bar = function () {
+        ...
+      return this;
+      }
+      Foo.prototype.baz = function () {
+        ...
+      return this;
+      }
+      new Foo().bar().baz(). ...
+  ```
