@@ -25,11 +25,11 @@
       }
       Foo.prototype.bar = function () {
         ...
-      return this;
+        return this;
       }
       Foo.prototype.baz = function () {
         ...
-      return this;
+        return this;
       }
       new Foo().bar().baz(). ...
   ```
