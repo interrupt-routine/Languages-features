@@ -64,7 +64,8 @@ The `final` specifier for a parameter is not very useful in Java :
 public void mutateArray (final int array[]) {
   array[0] = 666;     // this works fine (sadly)
   array = new int[5]; // Error : The final local variable 'array' cannot be assigned.
-                      // but the caller would not care if it did get reassigned, since array is passd by copy of a reference
+                      // but the caller would not care if it did get reassigned,
+                      // since array is passed by copy of its reference
 }
 ```
 
