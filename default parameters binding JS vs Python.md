@@ -23,7 +23,7 @@ a common pattern to circumvent this in Python is to use `None` as the default va
 
 ```python
 def lst_add (value, lst = None):
-  lst = lst or []
+  lst = [] if lst is None else lst
   lst.append(value)
   return lst
 
